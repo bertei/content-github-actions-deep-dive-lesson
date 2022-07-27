@@ -92,7 +92,7 @@ jobs:
       - name: Invoke Test Function
         run: |
             aws lambda invoke --function-name test-function-${{ matrix.input }} \
-            --payload $(echo "{\"input\": \"${{ matrix.input }}\" | base64) \
+            --payload $(echo "{\"input\": \"${{ matrix.input }}\"} | base64) \
             -- output json out
             if grep -q "Error" out; then
               exit1
